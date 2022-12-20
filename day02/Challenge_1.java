@@ -49,6 +49,7 @@ public class Challenge_1 {
     }
 
     // Returns the output of the Rock, Paper, Scissor game (0 if lost, 3 if tied, 6 if won)
+    // A: Rock, B: Paper, C: Scissor
     private static int gameOutput(String opponentHand, String ourHand) {
         if (opponentHand.equals(ourHand)) {
             return 3;
