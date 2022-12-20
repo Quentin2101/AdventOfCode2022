@@ -58,7 +58,7 @@ public class Challenge_1 {
     }
 
     // Transforms an array of character to an array of priorities (int)
-    private static int[] charArrayToprioArray(char[] lineArray) {
+    public static int[] charArrayToprioArray(char[] lineArray) {
         int[] prioArray = new int[lineArray.length];
 
         for (int i = 0; i < lineArray.length; i++) {
