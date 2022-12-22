@@ -35,15 +35,9 @@ public class Challenge_1 {
     }
 
 
-    //Returns true if one range is contained in the other, false otherwise (Range format is [x, y])
+    //Returns true if one range is fully contained in the other, false otherwise (Range format is [x, y])
     private static Boolean areRangesContained(int[] range1, int[] range2) {
-        if (range1[0] >= range2[0] && range1[1] <= range2[1]) {
-            return true;
-        } else if (range2[0] >= range1[0] && range2[1] <= range1[1]) {
-            return true;
-        } else {
-            return false;
-        }
+        return (range1[0] >= range2[0] && range1[1] <= range2[1]) || (range2[0] >= range1[0] && range2[1] <= range1[1]);
     }
 
     // Returns the range array of ints [x, y] of the format string "x-y"
