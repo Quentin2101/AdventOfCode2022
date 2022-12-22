@@ -38,6 +38,8 @@ public class Challenge_2 {
                 }
             }
 
+            scanner.close();
+
             System.out.println("The game score is: " + totalScore);
         } catch (Exception e) {
             e.printStackTrace();

@@ -25,6 +25,8 @@ public class Challenge_1 {
                     System.out.println("No shared character found !");
             }
 
+            scanner.close();
+
             System.out.println("The sum of all common priorities is: " + score);
         } catch (Exception e) {
             e.printStackTrace();

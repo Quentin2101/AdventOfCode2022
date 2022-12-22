@@ -39,6 +39,8 @@ public class Challenge_1 {
                 totalScore += gameOutput(opponentHand, ourHand);
             }
 
+            scanner.close();
+            
             System.out.println("The game score is: " + totalScore);
         } catch (Exception e) {
             e.printStackTrace();

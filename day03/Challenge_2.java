@@ -38,6 +38,8 @@ public class Challenge_2 {
                     counter++;
             }
 
+            scanner.close();
+
             System.out.println("The sum of all common priorities is : " + score);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

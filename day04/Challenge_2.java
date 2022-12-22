@@ -25,6 +25,8 @@ public class Challenge_2 {
                     containCounter++;
             }
 
+            scanner.close();
+
             System.out.println("The number of pairs that fully contain another pair is: " + containCounter);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

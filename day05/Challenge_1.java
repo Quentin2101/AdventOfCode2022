@@ -38,6 +38,8 @@ public class Challenge_1 {
                 processRearrangement(move, stackArrayList);
             }
 
+            scanner.close();
+
             // Printing the top of each Stack
             for (Stack<String> stack : stackArrayList) {
                 System.out.print(stack.peek().toCharArray()[1]);
