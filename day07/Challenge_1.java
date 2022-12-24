@@ -21,7 +21,7 @@ public class Challenge_1 {
         System.out.println("Total runTime: " + (endTime - startTime) + "ms");
     }
 
-    // Recursive way getting all values <= 100000 while going through the file system structure
+    // Recursive way of getting all values <= 100000, going through the file system structure
     private static int fileSystemSearch(FileSystem fileSystem, int value) {
         if(!fileSystem.getNextLayer().isEmpty()) {
             // Going through folders in the next layer
