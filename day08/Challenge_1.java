@@ -53,7 +53,7 @@ public class Challenge_1 {
         boolean rightSide = true;
 
         // Is visible from the left side
-        for (int i = 0; i < valueIndex; i++) {
+        for (int i = valueIndex - 1; i >= 0; i--) {
             if (line[i] >= value){
                 leftSide = false;
                 break;
