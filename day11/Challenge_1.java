@@ -14,10 +14,9 @@ public class Challenge_1 {
 
         // Processing the game
         int numberOfRounds = 20;
-
         playTheGame(numberOfRounds, monkeysSpecifications);
 
-        // Return the level of monkey buisness
+        // Return the level of monkey business
         int monkeyBusiness = findMonkeyBusiness(monkeysSpecifications);
 
         System.out.println("The level of monkey business after 20 rounds of stuff-slinging simian shenanigans is: " + monkeyBusiness);
@@ -40,20 +39,20 @@ public class Challenge_1 {
 
     private static void playTheGame(int numberOfRounds, ArrayList<Object[]> monkeysSpecifications) {
         for (int i = 0; i < numberOfRounds; i++) {
-            for (int j = 0; j < monkeysSpecifications.size(); j++) {
+            for (Object[] monkeySpecification : monkeysSpecifications) {
                 // Processing the current monkey items
-                ArrayDeque<Integer> currentMonkeyItems = (ArrayDeque<Integer>) monkeysSpecifications.get(j)[0];
-                while(!currentMonkeyItems.isEmpty()) {
+                ArrayDeque<Integer> currentMonkeyItems = (ArrayDeque<Integer>) monkeySpecification[0];
+                while (!currentMonkeyItems.isEmpty()) {
                     int item = currentMonkeyItems.removeFirst();
 
                     // Processing the operation on the item
-                    String[] currentMonkeyOperation = (String[]) monkeysSpecifications.get(j)[1];
+                    String[] currentMonkeyOperation = (String[]) monkeySpecification[1];
                     int operationResult;
                     if (Objects.equals(currentMonkeyOperation[0], "old"))
                         operationResult = item;
                     else
                         operationResult = Integer.parseInt(currentMonkeyOperation[0]);
-                    for (int k = 2; k < currentMonkeyOperation.length; k+=2) {
+                    for (int k = 2; k < currentMonkeyOperation.length; k += 2) {
                         int value;
                         if (Objects.equals(currentMonkeyOperation[k], "old"))
                             value = item;
@@ -67,22 +66,22 @@ public class Challenge_1 {
                             case "/" -> operationResult /= value;
                         }
                     }
-                    operationResult/=3;
+                    operationResult /= 3;
 
                     // Processing the condition on the operation result
-                    int divisibleTestValue = (int) monkeysSpecifications.get(j)[2];
-                    if (operationResult%divisibleTestValue == 0) {
-                        int receivingMonkeyIndex = (int) monkeysSpecifications.get(j)[3];
+                    int divisibleTestValue = (int) monkeySpecification[2];
+                    if (operationResult % divisibleTestValue == 0) {
+                        int receivingMonkeyIndex = (int) monkeySpecification[3];
                         ArrayDeque<Integer> receivingMonkeyItems = (ArrayDeque<Integer>) monkeysSpecifications.get(receivingMonkeyIndex)[0];
                         receivingMonkeyItems.addLast(operationResult);
                     } else {
-                        int receivingMonkeyIndex = (int) monkeysSpecifications.get(j)[4];
+                        int receivingMonkeyIndex = (int) monkeySpecification[4];
                         ArrayDeque<Integer> receivingMonkeyItems = (ArrayDeque<Integer>) monkeysSpecifications.get(receivingMonkeyIndex)[0];
                         receivingMonkeyItems.addLast(operationResult);
                     }
 
                     // Adding 1 to the number of items processed by the monkey
-                    monkeysSpecifications.get(j)[5] = (int) monkeysSpecifications.get(j)[5] + 1;
+                    monkeySpecification[5] = (int) monkeySpecification[5] + 1;
                 }
             }
         }
@@ -118,21 +117,11 @@ public class Challenge_1 {
         for (int i = 1; i < parsedSpecification.length; i++) {
             String line = parsedSpecification[i].split(": ")[1];
             switch (i) {
-                case 1 -> {
-                    currentSpecification[0] = parsingItems(line);
-                }
-                case 2 -> {
-                    currentSpecification[1] = parsingOperation(line);
-                }
-                case 3 -> {
-                    currentSpecification[2] = parsingDivisibleTest(line);
-                }
-                case 4 -> {
-                    currentSpecification[3] = parsingCondition(line);
-                }
-                case 5 -> {
-                    currentSpecification[4] = parsingCondition(line);
-                }
+                case 1 -> currentSpecification[0] = parsingItems(line);
+                case 2 -> currentSpecification[1] = parsingOperation(line);
+                case 3 -> currentSpecification[2] = parsingDivisibleTest(line);
+                case 4 -> currentSpecification[3] = parsingCondition(line);
+                case 5 -> currentSpecification[4] = parsingCondition(line);
             }
         }
     }
@@ -158,8 +147,8 @@ public class Challenge_1 {
     private static ArrayDeque<Integer> parsingItems(String itemLine) {
         String[] numbersParsed = itemLine.split(", ");
         ArrayDeque<Integer> items = new ArrayDeque<>();
-        for (int j = 0; j < numbersParsed.length; j++) {
-            items.addLast(Integer.parseInt(numbersParsed[j]));
+        for (String number : numbersParsed) {
+            items.addLast(Integer.parseInt(number));
         }
 
         return items;
